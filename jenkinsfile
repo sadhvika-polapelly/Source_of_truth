@@ -1,0 +1,39 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Build') {
+            steps {
+                bat 'gradlew.bat build'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                bat 'gradlew.bat test'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploy skipped if tests fail'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Pipeline succeeded'
+        }
+        failure {
+            echo 'Pipeline failed'
+        }
+    }
+}
