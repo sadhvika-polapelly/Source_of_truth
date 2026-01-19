@@ -1,8 +1,4 @@
 function checkout(amount) {
-    return amount * 1.18; // placeholder calculation
-}
-
-function checkout(amount) {
-     const price=calculateTax(amount);
+     const price=amount*1.18;
      return price;
 }
